@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="C:\Lazarus\fpc\3.2.0\bin\x86_64-win64\fpc.exe" Date="1381338938"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -l -vewnhibq &quot;-FiD:\YandexDisk\Университет\Хранилище\Операционные системы и среды\2\src\Pascal\lib\x86_64-win64&quot; &quot;-FuD:\YandexDisk\Университет\Хранилище\Операционные системы и среды\2\src\Pascal\&quot; &quot;-FUD:\YandexDisk\Университет\Хранилище\Операционные системы и среды\2\src\Pascal\lib\x86_64-win64\&quot; &quot;-FED:\YandexDisk\Университет\Хранилище\Операционные системы и среды\2\src\Pascal\&quot; &quot;-oD:\YandexDisk\Университет\Хранилище\Операционные системы и среды\2\src\Pascal\project1.exe&quot; project1.lpr"/>
+  <Complete Value="False"/>
+</CONFIG>

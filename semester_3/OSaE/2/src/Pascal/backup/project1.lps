@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Default"/>
+    <Units Count="7">
+      <Unit0>
+        <Filename Value="project1.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="30" Y="3"/>
+        <UsageCount Value="37"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="master.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Master"/>
+        <CursorPos Y="75"/>
+        <UsageCount Value="37"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="sort.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Sort"/>
+        <EditorIndex Value="2"/>
+        <CursorPos Y="5"/>
+        <UsageCount Value="37"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="C:\lazarus\fpc\3.2.0\source\rtl\win\wininc\base.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="51"/>
+        <CursorPos X="6" Y="71"/>
+        <UsageCount Value="8"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="C:\Users\user0\Desktop\pas\main.pas"/>
+        <UnitName Value="MasterThread"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="17"/>
+        <UsageCount Value="9"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="C:\lazarus\fpc\3.2.0\source\rtl\win\wininc\struct.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="6256"/>
+        <CursorPos X="6" Y="6270"/>
+        <UsageCount Value="13"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="Thread.pas"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="22"/>
+        <CursorPos X="36" Y="55"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit6>
+    </Units>
+    <JumpHistory Count="9" HistoryIndex="8">
+      <Position1>
+        <Filename Value="master.pas"/>
+        <Caret Line="6" Column="5"/>
+      </Position1>
+      <Position2>
+        <Filename Value="sort.pas"/>
+        <Caret Line="14" Column="71"/>
+      </Position2>
+      <Position3>
+        <Filename Value="sort.pas"/>
+        <Caret Line="7" Column="15"/>
+      </Position3>
+      <Position4>
+        <Filename Value="sort.pas"/>
+        <Caret Line="20" Column="162"/>
+      </Position4>
+      <Position5>
+        <Filename Value="sort.pas"/>
+        <Caret Line="29" Column="18"/>
+      </Position5>
+      <Position6>
+        <Filename Value="master.pas"/>
+        <Caret Line="5" Column="26"/>
+      </Position6>
+      <Position7>
+        <Filename Value="sort.pas"/>
+        <Caret Line="67" Column="66"/>
+      </Position7>
+      <Position8>
+        <Filename Value="sort.pas"/>
+        <Caret Line="9" Column="36"/>
+      </Position8>
+      <Position9>
+        <Filename Value="master.pas"/>
+        <Caret Line="8" Column="29"/>
+      </Position9>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
