@@ -1,0 +1,65 @@
+@startuml
+
+abstract Person {
+    #char passport_num_[10]
+    #string name_
+    #string surname_
+    #string patronymic_
+    
+    #string login_
+    #string password_
+
+    +Person (passport_num, name, surname, patronymic)
+    +string getName()
+    +string getSurname()
+    +string getPatronymic()
+    +void getPassportNumber (char out[])
+}
+class Client {
+    -Map<int, Card> cards_
+    -Map<int, Account> accounts_
+
+    +Client &addCard (int id, Card& card)
+    +Client &addAccount (int id, Account& account)
+    +Client &removeCard (int id)
+    +Client &removeAccount (int id)
+    +Card *getCardById (int id)
+    +Account *getAccountById (int id)
+}
+class CaStaff {
+    +Card *openCard (Account *account)
+}
+class CDStaff {
+    +Account *openDeposit (Client *client, float money_amount, float interest)
+    +Account *openCredit (Client *client, float money_amount, float interest)
+}
+
+Client --|> Person
+CaStaff --|> Person
+CDStaff --|> Person
+
+
+class Account {
+    -Client *client_
+    -float interest_
+    -float money_amount_
+
+    +Account (Client *client, float money_amount, float interest)
+    +Account &castInterest()
+    +Account &putMoney (float amount)
+    +float giveMoney (float amount)
+}
+class Card {
+    -Account *account_
+
+    +Card (Account *account)
+}
+
+Account "0..n"--o Client
+Card "0..n" --o Client
+Account "1"--right--"0..n" Card : "< Указывает"
+
+CaStaff "1"-up-"1" Card : "> Открывает"
+CDStaff "1"-up-"1" Account : "> Открывает"
+
+@enduml

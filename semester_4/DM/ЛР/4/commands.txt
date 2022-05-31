@@ -1,0 +1,56 @@
+/* Показать нужные поля таблицы */
+SELECT operation.num, operation.patient_id, operation.patent_id
+    FROM operation;
+
+
+
+/* Соединение operation с surgeon через JOIN */
+SELECT operation.num, operation.patient_id, surgeon.fio
+    FROM operation JOIN surgeon ON operation.patent_id = surgeon.id;
+
+/* Соединение operation с surgeon без JOIN */
+SELECT operation.num, operation.patient_id, surgeon.fio
+    FROM operation, surgeon
+    WHERE operation.patent_id = surgeon.id;
+
+
+
+/* Соединение operation, surgeon и patient через JOIN */
+SELECT operation.num, patient.birth_date, surgeon.fio
+    FROM (operation
+        JOIN surgeon
+        ON operation.patent_id = surgeon.id)
+    JOIN patient
+    ON patient.id = operation.patient_id;
+
+/* Аналогичный запрос без JOIN */
+SELECT operation.num, patient.birth_date, surgeon.fio
+    FROM operation, patient, surgeon
+    WHERE
+        operation.patent_id = surgeon.id AND
+        patient.id = operation.patient_id;
+
+
+
+/* Использование псевдонимов на примере рекурсивного запроса
+   Запрос: вывести пары операций, имеющих одного и того же пациента.*/
+SELECT f.patient_id, f.num, s.num
+    FROM operation f, operation s
+    WHERE
+        f.patient_id = s.patient_id AND
+        f.num > s.num;
+
+
+
+/*
+   Использование подзапросов + подзапросы с HAVING.
+   Запрос: вывести количество операций, которые проводит хирург, значение id
+     патента которого выше среднего на две единицы. Записи группировать по
+     значению id патента.
+*/
+SELECT t.patent_id, COUNT (t.num)
+    FROM operation t
+    GROUP BY t.patent_id
+    HAVING t.patent_id > (
+        SELECT AVG(surgeon.id) + 2
+            FROM surgeon);

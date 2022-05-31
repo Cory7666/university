@@ -1,0 +1,57 @@
+| Создание базы данных |
+CREATE DATABASE 'localhost:/opt/DM/ЛР_1/MyDB.fdb'
+	USER 'sysdba' PASSWORD 'masterkey'
+	DEFAULT CHARACTER SET utf8;
+
+| Подключение к базу данных |
+CONNECT 'localhost:/opt/DM/ЛР_1/MyDB.fdb'
+	USER 'sysdba' PASSWORD 'masterkey';
+
+
+
+| Создание тестовой таблицы |
+CREATE TABLE my_test_table (
+	id INTEGER PRIMARY KEY,
+	name VARCHAR(8) NOT NULL,
+	surname VARCHAR(12) NOT NULL,
+	dep_num INTEGER DEFAULT 0,
+	job_cod VARCHAR(8) NOT NULL,
+	salary INTEGER DEFAULT 0
+);
+
+
+
+| Создать 4 таблицы по варианту 3 |
+|| Таблица Пациенты ||
+CREATE TABLE patient (
+	id         INTEGER      NOT NULL PRIMARY KEY,
+	FIO        VARCHAR(128) NOT NULL,
+	address    VARCHAR(128) NOT NULL,
+	birth_date DATE         NOT NULL
+);
+|| Таблица Хирург ||
+CREATE TABLE surgeon (
+	id  INTEGER      NOT NULL PRIMARY KEY,
+	FIO VARCHAR(128) NOT NULL
+);
+|| Таблица Препарат ||
+CREATE TABLE drug (
+	name VARCHAR(128)        NOT NULL PRIMARY KEY,
+	side_effect VARCHAR(256) NOT NULL
+);
+|| Таблица Процедура ||
+CREATE TABLE procedures (
+	procedure_title VARCHAR(32) NOT NULL PRIMARY KEY,
+	equipment       VARCHAR(32) NOT NULL
+);
+
+
+
+| Использование WHERE с простым условием |
+SELECT * FROM patient WHERE ID=20;
+SELECT ID, FIO FROM patient WHERE FIO LIKE '% Яна %';
+SELECT ID, birth_date FROM patient WHERE birth_date BETWEEN '1990-01-01' AND '2010-01-01' ORDER BY birth_date;
+
+| Использование WHERE со сложным условием |
+SELECT name FROM drug WHERE (side_effect LIKE '%Снижение массы тела%') AND (name LIKE '%с%') ORDER BY name ASC;
+SELECT FIO, birth_date FROM patient WHERE (fio LIKE 'Неторжко %евна') OR (birth_date > '2009-01-01') ORDER BY fio DESC;

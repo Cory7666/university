@@ -1,0 +1,38 @@
+CREATE TABLE operation (
+    num INTEGER NOT NULL,
+    op_date DATE NOT NULL,
+    patient_id INTEGER NOT NULL,
+    patent_id INTEGER NOT NULL,
+    op_name VARCHAR(20) NOT NULL,
+    directives VARCHAR(50) NOT NULL,
+    PRIMARY KEY (num),
+    FOREIGN KEY (patient_id) REFERENCES patient(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (patent_id) REFERENCES surgeon(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+CREATE TABLE drug_operation (
+    drug_name VARCHAR(128) NOT NULL,
+    operation_id INTEGER NOT NULL,
+    FOREIGN KEY (drug_name) REFERENCES drug(name)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (operation_id) REFERENCES operation(num)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+
+CREATE TABLE operation_procedure (
+    operation_id INTEGER NOT NULL,
+    procedure_title VARCHAR(32) NOT NULL,
+    FOREIGN KEY (operation_id) REFERENCES operation(num)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (procedure_title) REFERENCES procedures(procedure_title)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+

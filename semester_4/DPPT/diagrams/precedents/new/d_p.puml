@@ -1,0 +1,51 @@
+@startuml
+
+left to right direction
+
+package Банк {
+    
+    rectangle Счета {
+        (Открыть счёт) as openAccount
+        (Открыть кредитный счёт) as openCreditAccount
+        (Открыть депозитный счёт) as openDepositAccount
+        (Положить деньги на счёт) as putMoney
+        (Снять деньги со счёта) as giveMoney
+        (Закрыть счёт) as closeAccount
+        (Получить список счетов) as getAccountList
+    }
+
+    rectangle Карты {
+        (Выпустить карту) as openCard
+        (Выпустить кредитную карту) as openCreditCard
+        (Выпустить дебетовую карту) as openDebitCard
+        (Закрыть карту) as removeCard
+        (Получить список карт) as getCardList
+    }
+}
+
+:Клиент: as Client
+:Отдел Кредитования и Депозитов: as CDDep
+:Отдел Выдачи Карт: as CaDep
+
+CaDep -- openCard
+CaDep -- removeCard
+openCard <|-- openCreditCard
+openCard <|-- openDebitCard
+openCreditCard --> getCardList : "include"
+openDebitCard --> getCardList : "include"
+
+CDDep -- openAccount
+CDDep -- closeAccount
+openAccount <|-- openCreditAccount
+openAccount <|-- openDepositAccount
+openCreditAccount --> getAccountList : "include"
+openDepositAccount --> getAccountList : "include"
+
+Client -- putMoney
+Client -- giveMoney
+Client ---- getCardList
+Client --- getAccountList
+putMoney ---> getAccountList : "include"
+giveMoney ---> getAccountList : "include"
+
+@enduml

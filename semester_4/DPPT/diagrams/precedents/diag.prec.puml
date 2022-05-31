@@ -1,0 +1,62 @@
+@startuml
+
+left to right direction
+
+package Банк {
+    
+    rectangle Кредиты {
+        (Оформить Кредит) as processCredit
+        (Внести Кредитный Платёж) as putMoneyCredit
+        (Получить Состояние Кредита) as getCreditInfo
+    }
+
+    rectangle Депозиты {
+        (Оформить Депозит) as processDeposit
+        (Положить Деньги на Депозит) as putMoneyDeposit
+        (Снять Деньги с Депозита) as getMoneyDeposit
+        (Получить Состояние Депозита) as getDepositInfo
+
+    }
+
+    rectangle Карты {
+        (Выдать Карту) as processCard
+        (Выдать Кредитную Карту) as processCreditCard
+        (Выдать Депозитную Карту) as processDepositCard
+        (Закрыть Кредитную Карту) as purgeCreditCard
+        (Закрыть Депозитную Карту) as purgeDepositCard
+        (Получить Список Карт Клиента) as getCardList
+    }
+
+}
+
+:Клиент: as Client
+:Отдел Кредитования и Депозитов: as CredDepDepartment
+:Отдел Выдачи Карт: as CardsDepartment
+:Кассир: as Cashier
+
+CredDepDepartment -- processDeposit
+CredDepDepartment -- processCredit
+
+CardsDepartment -- processCard
+CardsDepartment -- purgeCreditCard
+CardsDepartment -- purgeDepositCard
+
+Cashier -- putMoneyCredit
+Cashier -- putMoneyDeposit
+Cashier -- getMoneyDeposit
+
+Client --- getCreditInfo
+Client --- getDepositInfo
+Client ---- getCardList
+
+processCard <|-- processCreditCard
+processCard <|-- processDepositCard
+putMoneyCredit ..> getCreditInfo : include
+putMoneyDeposit ..> getDepositInfo : include
+getMoneyDeposit ..> getDepositInfo : include
+purgeCreditCard ..> getCardList : include
+purgeDepositCard ..> getCardList : include
+processCreditCard ..> getCardList : include
+processDepositCard ..> getCardList : include
+
+@enduml

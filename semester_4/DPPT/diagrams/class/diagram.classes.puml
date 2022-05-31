@@ -1,0 +1,133 @@
+@startuml
+
+class BankSystem {
+    +CreditsDepositsBS Account_operations
+    +CardsBS card_operations
+    +CashierBS cashier_operations
+    #List<Client> clients_
+}
+class CreditsDepositsBS {
+    -void addAccountTo (id_t client_id, Account *cd)
+}
+class CardsBS {
+    -void addCardTo (id_t client_id, Card *card)
+}
+class CashierBS {
+    -void transferMoneyToClient<Card> (id_t client_id, id_t obj_id, float money_amount)
+    -void transferMoneyToClient<Account>   (id_t client_id, id_t obj_id, float money_amount)
+    -void transferMoneyFromClient<Card> (id_t client_id, id_t obj_id, float money_amount)
+    -void transferMoneyFromClient<Account>   (id_t client_id, id_t obj_id, float money_amount)
+}
+
+
+
+abstract Card {
+    #card_num_t number_[16]
+    #float money_amount_
+    #float interest_
+    
+    +Card(float interest_)
+    +~Card(void)
+    +card_num_t *getCardNumber(void)
+    +virtual void castInterest (void) = 0
+}   
+class CreditCard {
+    +virtual void castInterest (void)
+}
+class DebitCard {
+    +virtual void castInterest (void)
+}
+
+
+
+abstract Account {
+    #id_t id_
+    #float money_amount_
+    #float interest_
+
+    #Account (float interest)
+    +float getMoneyAmount (void)
+    +virtual void castInterest (void) = 0
+    +virtual void putMoney (float money_amount) = 0
+    +virtual void giveMoney (float money_amount) = 0
+}
+class Credit {
+    +void castInterest (void)
+    +void putMoney (float money_amount)
+    +void giveMoney (float money_amount)
+}
+class Deposit {
+    +void castInterest (void)
+    +void putMoney (float money_amount)
+    +void giveMoney (float money_amount)
+}
+
+
+
+abstract Person {
+    -string name_
+    -string surname_
+    -string role_
+    -string login_
+    -char passwd_hash_[256]
+
+    +Person (string name, string surname, string position)
+    +string getName(void)
+    +string getSurname(void)
+    +string whoAmI(void)
+}
+class Client {
+    -id_t client_id
+    -float inner_wallet_
+    +List<Account> credits_deposits
+    +List<Card> cards
+
+    +Client (string name, string surname)
+    +id_t getClientId(void)
+    +float getWalletState(void)
+    +void putMoney (float money_amount)
+    +void giveMoney (float money_amount)
+}
+class CDStaff {
+    +CDStaff (string name, string surname)
+    +Account *openCredit  (float interest)
+    +Account *openDeposit (float interest)
+}
+class CaStaff {
+    +CaStaff (string name, string surname)
+    +Card *openCreditCard (float interest)
+    +Card *openDebitCard  (float interest)
+}
+class Cashier {
+    +Cashier (string name, string surname)
+}
+
+
+
+CreditsDepositsBS "1"-down-* BankSystem
+CardsBS "1"-down-* BankSystem
+CashierBS "1"-down-* BankSystem
+
+CreditCard --|> Card
+DebitCard --|> Card
+
+Client -down-|> Person
+CDStaff -down-|> Person
+CaStaff -down-|> Person
+Cashier -down-|> Person
+
+Deposit --|> Account
+Credit --|> Account
+
+CDStaff ..> CreditsDepositsBS
+CDStaff "1..n"-->"1..n" Credit : "> Открывает"
+CDStaff "1..n"-->"1..n" Deposit : "> Открывает"
+CaStaff ..> CardsBS
+CaStaff "1..n"-->"1..n" CreditCard : "> Открывает"
+CaStaff "1..n"-->"1..n" DebitCard : "> Открывает"
+Cashier ..> CashierBS
+
+Account "1..n"--o Client
+Card "1..n"--o Client
+
+@enduml

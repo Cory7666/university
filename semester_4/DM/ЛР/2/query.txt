@@ -1,0 +1,5 @@
++--students------+
+|num|fio|group|st|
++----------------+
+
+SELECT group, MAX(st) FROM students GROUP BY group;
