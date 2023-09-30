@@ -1,0 +1,94 @@
+>> run('Y:\files\Work\University\Activity\IPaST\src\3\script.m')
+File: script.m Line: 1 Column: 8
+Invalid expression. Check for missing multiplication operator, missing or unbalanced delimiters, or other syntax
+error. To construct matrices, use brackets instead of parentheses.
+
+Error in run (line 91)
+evalin('caller', strcat(script, ';'));
+ 
+>> run('Y:\files\Work\University\Activity\IPaST\src\3\script.m')
+
+a =
+
+    1.0000    0.5000
+
+
+b =
+
+    1.0000    4.0000    3.0000    2.0000    0.5000
+
+
+x =
+
+     1     2     3     4
+
+
+y1 =
+
+    1.0000    5.5000   11.2500   18.3750
+
+
+s =
+
+   20.3125
+   19.0000
+    9.5000
+    2.0000
+
+
+g =
+
+  Columns 1 through 11
+
+    1.0000    4.5000    5.7500    7.1250    6.9375    7.0312    6.9844    7.0078    6.9961    7.0020    6.9990
+
+  Columns 12 through 20
+
+    7.0005    6.9998    7.0001    6.9999    7.0000    7.0000    7.0000    7.0000    7.0000
+
+
+g2 =
+
+    1.0000
+    4.5000
+    5.7500
+    7.1250
+    6.9375
+    7.0312
+    6.9844
+    7.0078
+    6.9961
+    7.0020
+    6.9990
+    7.0005
+    6.9998
+    7.0001
+
+
+z =
+
+  -3.2521 + 0.0000i
+  -0.1944 + 0.6247i
+  -0.1944 - 0.6247i
+  -0.3591 + 0.0000i
+
+
+p =
+
+         0
+         0
+         0
+   -0.5000
+
+
+k =
+
+     1
+
+
+sos =
+
+    1.0000    3.6112    1.1680    1.0000    0.5000         0
+    1.0000    0.3888    0.4281    1.0000         0         0
+
+>> 

@@ -1,0 +1,16 @@
+#!/usr/bin/gnuplot -persist
+
+set xlabel "Частота, Гц"
+set ylabel "Напряжение, В"
+set xrange [0:20000]
+set grid
+set terminal svg size 1200, 600
+
+set output "afg.1segments.svg"
+plot "out-data.1segments.csv" with lines
+
+set output "afg.5segments.svg"
+plot "out-data.5segments.csv" with lines
+
+set output "afg.8segments.svg"
+plot "out-data.8segments.csv" with lines
