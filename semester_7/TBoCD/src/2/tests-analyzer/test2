@@ -1,0 +1,6 @@
+wrong_ident = 20;
+
+for idx000s = 1.0 to 30.0 (
+    acc0um = acc0um + idx;
+    acc0m = acc0m * (10.125 / idx);
+)

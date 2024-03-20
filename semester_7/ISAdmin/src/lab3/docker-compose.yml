@@ -1,0 +1,66 @@
+version: '2'
+
+services:
+  zabbix-server:
+    image: zabbix/zabbix-server-pgsql:alpine-latest
+    depends_on:
+      - database
+    environment:
+      - DB_SERVER_HOST=database
+      - DB_SERVER_PORT=5432
+      - POSTGRES_DB=zabbix
+      - POSTGRES_USER=zabbix
+      - POSTGRES_PASSWORD=secretpass
+    ports:
+      - 10051:10051
+    networks:
+      zabbixnet:
+
+  zabbix-web:
+    image: zabbix/zabbix-web-apache-pgsql:alpine-latest
+    depends_on:
+      - database
+      - zabbix-server
+    environment:
+      - DB_SERVER_HOST=database
+      - DB_SERVER_PORT=5432
+      - POSTGRES_DB=zabbix
+      - POSTGRES_USER=zabbix
+      - POSTGRES_PASSWORD=secretpass
+      - ZBX_SERVER_HOST=zabbix-server
+#    ports:
+#      - 8080:8080
+    networks:
+      zabbixnet:
+
+  database:
+    image: postgres:15.4-alpine
+    environment:
+      - POSTGRES_PASSWORD=secretpass
+    volumes:
+      - /home/alex/postgres_data:/var/lib/postgresql/data
+
+    networks:
+      zabbixnet:
+        ipv4_address: 172.150.0.10
+
+  proxy:
+    image: nginx
+    depends_on:
+      - zabbix-web
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /home/alex/certs:/certs:ro
+      - ./nginx-logs:/var/log/nginx
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      zabbixnet:
+
+networks:
+  zabbixnet:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.150.0.0/24

@@ -1,0 +1,15 @@
+# Pictures
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jp?g filter=lfs diff=lfs merge=lfs -text
+# Printable
+*.pdf filter=lfs diff=lfs merge=lfs -text
+# OpenOffice
+*.odt filter=lfs diff=lfs merge=lfs -text
+*.ods filter=lfs diff=lfs merge=lfs -text
+*.odp filter=lfs diff=lfs merge=lfs -text
+# Microsoft Office
+*.docx filter=lfs diff=lfs merge=lfs -text
+*.xlsx filter=lfs diff=lfs merge=lfs -text
+*.pptx filter=lfs diff=lfs merge=lfs -text
+# Archives
+*.zip filter=lfs diff=lfs merge=lfs -text
