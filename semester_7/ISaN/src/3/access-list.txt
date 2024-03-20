@@ -1,0 +1,6 @@
+ip access-list extended ServerOut
+permit ip host 172.16.0.100 host 172.16.1.2
+permit tcp any host 172.16.1.2 eq 80
+permit tcp any host 172.16.1.2 eq 21
+permit tcp any host 172.16.1.2 eq 53
+permit udp any host 172.16.1.2 eq 53
