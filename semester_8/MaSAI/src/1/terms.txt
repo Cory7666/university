@@ -1,0 +1,1 @@
+product(bricks, 'Clay Production', 56).

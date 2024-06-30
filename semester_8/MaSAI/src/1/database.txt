@@ -1,0 +1,5 @@
+product(planks,'ForceOfForest',28).
+product(nails,'Iron Factory Ltd.',5).
+product(_8572,'AnotherOne Ltd.',99).
+Экспортировано.
+Загрзить из: Импортировано.
